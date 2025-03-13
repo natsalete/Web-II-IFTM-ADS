@@ -12,3 +12,7 @@ O exercício segue o roteiro fornecido no PDF abaixo:
 - CSS3  
 - Bootstrap
 ---
+## Licença
+
+- Este repositório está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
+---
