@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.web.bind.annotation.ModelAttribute;
- import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
  
  @Controller
  public class ProductController {
@@ -31,6 +32,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
      @PostMapping("/product/save")
      public String postMethodName(@ModelAttribute("product") Product product) {
          productService.saveProduct(product);
+         return "redirect:/product";
+     }
+
+     @GetMapping("/product/delete/{id}")
+     public String delete(@PathVariable Long id) {
+         this.productService.deleteProductById(id);
          return "redirect:/product";
      }
  }
