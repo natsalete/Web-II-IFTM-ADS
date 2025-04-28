@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.model.Product;
@@ -10,6 +11,7 @@ import com.example.demo.service.ProductService;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import jakarta.validation.Valid;
  
  @Controller
  public class ProductController {
@@ -30,9 +32,12 @@ import org.springframework.web.bind.annotation.PostMapping;
      }
  
      @PostMapping("/product/save")
-     public String postMethodName(@ModelAttribute Product product) {
-         productService.saveProduct(product);
-         return "redirect:/product";
+     public String postMethodName(@ModelAttribute @Valid Product product, BindingResult result) {
+        if (result.hasErrors()) {
+            return "product/create";
+        }
+        productService.saveProduct(product);
+        return "redirect:/product";
      }
 
      @GetMapping("/product/delete/{id}")

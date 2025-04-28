@@ -31,6 +31,7 @@
               name="name"
               placeholder="Digite o nome do produto"
             />
+            <p th:if="${#fields.hasErrors('name')}" th:errorclass="text-danger" th:errors="*{name}">
           </div>
         </div>
         <div class="form-group row">
@@ -46,6 +47,7 @@
               rows="4"
               cols="50"
             ></textarea>
+            <p th:if="${#fields.hasErrors('description')}" th:errorclass="text-danger" th:errors="*{description}" >
           </div>
         </div>
         <div class="form-group row">
@@ -60,6 +62,7 @@
               step="0.01"
               placeholder="Digite o preço do produto"
             />
+            <p th:if="${#fields.hasErrors('price')}" th:errorclass="text-danger" th:errors="*{price}" >
           </div>
         </div>
         <div class="form-group row">
@@ -73,6 +76,7 @@
               name="stock"
               placeholder="Digite a quantidade em estoque"
             />
+            <p th:if="${#fields.hasErrors('stock')}" th:errorclass="text-danger" th:errors="*{stock}" >
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
