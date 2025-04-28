@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.PostMapping;
      }
  
      @PostMapping("/product/save")
-     public String postMethodName(@ModelAttribute("product") Product product) {
+     public String postMethodName(@ModelAttribute Product product) {
          productService.saveProduct(product);
          return "redirect:/product";
      }
@@ -39,5 +39,12 @@ import org.springframework.web.bind.annotation.PostMapping;
      public String delete(@PathVariable Long id) {
          this.productService.deleteProductById(id);
          return "redirect:/product";
+     }
+
+     @GetMapping("/product/edit/{id}")
+     public String edit(@PathVariable Long id, Model model) {
+         Product product = productService.getProductById(id);
+         model.addAttribute("product", product);
+         return "product/edit";
      }
  }

@@ -1,5 +1,6 @@
 {
   "totvsLanguageServer.welcomePage": false,
   "totvsLanguageServer.editor.linter.includes": "C:\\TOTVS\\Protheus2310\\Protheus\\include",
-  "java.compile.nullAnalysis.mode": "automatic"
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
